@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <title>Garden</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <style type="text/css">
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<style type="text/css">
 table{
     width:100%;
 }
@@ -37,20 +37,22 @@ tr:hover{
 
 <body>
     <p>Temperature and Humidity</p>
-    <div class="mypanel"></div>
-    <script>
-    $.getJSON('https://api.thingspeak.com/channels/789928/feeds.json', function(data) {
-        var txt = `<table border="1">
-        <thead>
+    <table border="1">
+        <thead >
         <tr>
-			<th>STT</th>
+            <th>STT</th>
             <th>Time</th>
             <th>Temperature</th>
             <th>Humidity</th>
         </tr>
         </thead>
-        <tbody>`
-
+        <tbody class="mypanel">
+        </tbody>
+    </table>
+   
+    <script>
+    $.getJSON('https://api.thingspeak.com/channels/789928/feeds.json', function(data) {
+        var txt = ``;
         for(var i = 0; i <data.feeds.length; i++){
             var x = new Date(data.feeds[i].created_at);
             txt += `<tr>
@@ -59,9 +61,7 @@ tr:hover{
             <td>${data.feeds[i].field1}&deg;C</td>
             <td>${data.feeds[i].field2}%</td>
         </tr>`
-        }
-        
-        txt += `</tbody></table>`       
+        }      
         
         $(".mypanel").html(txt);
     });
