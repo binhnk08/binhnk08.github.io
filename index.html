@@ -43,6 +43,7 @@ tr:hover{
         var txt = `<table border="1">
         <thead>
         <tr>
+			<th>STT</th>
             <th>Time</th>
             <th>Temperature</th>
             <th>Humidity</th>
@@ -53,6 +54,7 @@ tr:hover{
         for(var i = 0; i <data.feeds.length; i++){
             var x = new Date(data.feeds[i].created_at);
             txt += `<tr>
+			<td>${i+1}</td>
             <td>${x.toLocaleDateString()} ${x.toLocaleTimeString()}</td>
             <td>${data.feeds[i].field1}&deg;C</td>
             <td>${data.feeds[i].field2}%</td>
