@@ -51,13 +51,13 @@ tr:hover{
     </table>
    
     <script>
-    $.getJSON('https://api.thingspeak.com/channels/789928/feeds.json', function(data) {
+    $.getJSON('https://api.myjson.com/bins/mmxqf', function(data) {
         var txt = ``;
         for(var i = 0; i <data.feeds.length; i++){
-            var x = new Date(data.feeds[i].created_at);
+            var x = data.feeds[i].created_at;
             txt += `<tr>
 			<td>${i+1}</td>
-            <td>${x.toLocaleDateString()} ${x.toLocaleTimeString()}</td>
+            <td>${x.substring(11,14)} - ${x.substring(14)}/2019</td>
             <td>${data.feeds[i].field1}&deg;C</td>
             <td>${data.feeds[i].field2}%</td>
         </tr>`
