@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Garden</title>
+<title>Website monitor</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <style type="text/css">
 table{
@@ -51,13 +51,13 @@ tr:hover{
     </table>
    
     <script>
-    $.getJSON('https://api.thingspeak.com/channels/789928/feeds.json', function(data) {
+    $.getJSON('https://api.myjson.com/bins/grjgz', function(data) {
         var txt = ``;
         for(var i = 0; i <data.feeds.length; i++){
             var x = new Date(data.feeds[i].created_at);
             txt += `<tr>
             <td>${i+1}</td>
-            <td>${x.toLocaleDateString()} ${x.toLocaleTimeString()}</td>
+            <td>${data.feeds[i].field3}</td>
             <td>${data.feeds[i].field1}&deg;C</td>
             <td>${data.feeds[i].field2}%</td>
         </tr>`
