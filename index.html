@@ -53,16 +53,16 @@ tr:hover{
     <script>
     $.getJSON('https://api.myjson.com/bins/grjgz', function(data) {
         var txt = ``;
-        for(var i = 0; i <10; i++){
+        for(var i = 0; i <data.feeds.length; i++){
             var x = new Date(data.feeds[i].created_at);
             txt += `<tr>
             <td>${i+1}</td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
+            <td>${data.feeds[i].field3}</td>
+            <td>${data.feeds[i].field1}&deg;C</td>
+            <td>${data.feeds[i].field2}%</td>
         </tr>`
         }      
-     
+        
         $(".mypanel").html(txt);
     });
     </script>
