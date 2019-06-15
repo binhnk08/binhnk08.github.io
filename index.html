@@ -51,13 +51,12 @@ tr:hover{
     </table>
    
     <script>
-    $.getJSON('https://api.myjson.com/bins/grjgz', function(data) {
+    $.getJSON('https://api.thingspeak.com/channels/789928/feeds.json', function(data) {
         var txt = ``;
         for(var i = 0; i <data.feeds.length; i++){
-            var x = new Date(data.feeds[i].created_at);
             txt += `<tr>
             <td>${i+1}</td>
-            <td>${data.feeds[i].field3}</td>
+            <td></td>
             <td>${data.feeds[i].field1}&deg;C</td>
             <td>${data.feeds[i].field2}%</td>
         </tr>`
