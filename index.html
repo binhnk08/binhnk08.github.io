@@ -13,7 +13,7 @@ table,th,td{
     font-size: 150%;
 }
 p{
-    color:red;
+    color:black;
     font-family: monospace;
     font-size:40px;
     text-align: center;
@@ -54,11 +54,16 @@ tr:hover{
     $.getJSON('https://api.thingspeak.com/channels/789928/feeds.json', function(data) {
         var txt = ``;
         for(var i = 0; i <data.feeds.length; i++){
+            var x = data.feeds[i].field3;
+            var y = data.feeds[i].field4;
+            if(x < 1000) x = `0` + x;
+            if(y < 1000) y = `0` + y;
+            var z = x.substring(2,4) + `:` +y. substring(0,2) +`:`+ y.substring(2,4) +` `+ x.substring(0,2) + `/06`;
             txt += `<tr>
             <td>${i+1}</td>
-            <td></td>
-            <td>${data.feeds[i].field1}&deg;C</td>
-            <td>${data.feeds[i].field2}%</td>
+            <td>${z}</td>
+            <td><font color="red">${data.feeds[i].field1}&deg;C</font></td>
+            <td><font color="blue">${data.feeds[i].field2}%</font></td>
         </tr>`
         }      
         
